@@ -1,11 +1,12 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
+import classNames from 'classnames'
 import { CommunityView } from './views/CommunityView'
 import { CustomizeView } from './views/CustomizeView'
 import { PlayView } from './views/PlayView'
 import { ShopView } from './views/ShopView'
 import { StartView } from './views/StartView'
 import InfiniteBg from './assets/infinitebg.png'
-import classNames from 'classnames'
+import { MultiplayerView } from './views/multiplayer/MultiplayerView'
 
 function App() {
   const { pathname } = useLocation()
@@ -27,7 +28,10 @@ function App() {
         <Route path="shop" element={<ShopView />} />
         <Route path="customize" element={<CustomizeView />} />
         <Route path="community" element={<CommunityView />} />
-        <Route path="play" element={<PlayView />} />
+        <Route path="play">
+          <Route path="" element={<PlayView />} />
+          <Route path="multiplayer/*" element={<MultiplayerView />} />
+        </Route>
       </Routes>
     </div>
   )

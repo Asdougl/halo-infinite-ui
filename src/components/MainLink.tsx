@@ -4,13 +4,16 @@ import { Link } from 'react-router-dom'
 interface MainLinkProps {
   children: React.ReactNode
   to: string
+  onHighlight?: () => void
 }
 
-export const MainLink = ({ to, children }: MainLinkProps) => {
+export const MainLink = ({ to, children, onHighlight }: MainLinkProps) => {
   return (
     <Link
       to={to}
       className="group relative uppercase text-white focus:outline-none"
+      onMouseEnter={onHighlight}
+      onFocus={onHighlight}
     >
       <div className="relative transition-transform group-hover:-translate-x-2 group-hover:-translate-y-1 group-focus:-translate-x-2 group-focus:-translate-y-1">
         <div className="p-1">
